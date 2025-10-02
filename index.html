@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stas Grigoryev Photography</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Stas Grigoryev – Street Photography</h1>
+  </header>
+
+  <!-- Category Filters -->
+  <section id="filters">
+    <button class="active" onclick="filterPhotos('all')">All</button>
+    <button onclick="filterPhotos('kazan')">Kazan</button>
+    <button onclick="filterPhotos('moscow')">Moscow</button>
+    <button onclick="filterPhotos('peterburg')">Saint Petersburg</button>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery" id="gallery"></section>
+
+  <!-- Load More -->
+  <button id="load-more" onclick="loadMore()">Load More</button>
+
+  <!-- Lightbox -->
+  <div id="lightbox" style="display:none;"></div>
+
+  <!-- JS -->
+  <script src="js/gallery.js"></script>
+</body>
+</html>
