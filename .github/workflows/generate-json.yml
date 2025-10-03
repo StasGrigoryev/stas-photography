@@ -1,4 +1,4 @@
-name: Generate photos.json
+name: Generate photos_data.json
 
 on:
   push:
@@ -22,13 +22,13 @@ jobs:
       - name: Install dependencies
         run: pip install pillow
 
-      - name: Generate photos.json
+      - name: Generate photos_data.json
         run: python generate_photos_json.py
 
       - name: Commit updated photos.json
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'actions@github.com'
-          git add photos.json
+          git add photos_data.json
           git commit -m "Auto-update photos.json" || echo "No changes"
           git push
