@@ -19,6 +19,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install dependencies
+        run: pip install pillow
+
       - name: Generate photos.json
         run: python generate_photos_json.py
 

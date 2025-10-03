@@ -10,6 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single+Ink:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -17,16 +21,14 @@
 
   <!-- Header -->
   <header>
-    <h1>Stas Grigoryev – Street Photography</h1>
+    <h1>Stas Grigoryev Photography</h1>
   </header>
 
-  <!-- Category Filters -->
-  <section id="filters">
-    <button class="active" onclick="filterPhotos('all')">All</button>
-    <button onclick="filterPhotos('kazan')">Kazan</button>
-    <button onclick="filterPhotos('moscow')">Moscow</button>
-    <button onclick="filterPhotos('peterburg')">Saint Petersburg</button>
-  </section>
+
+  <div class="filters-wrapper">
+    <section id="filters"></section>
+    <section id="subfilters"></section>
+  </div>
 
   <!-- Gallery -->
   <section class="gallery" id="gallery"></section>

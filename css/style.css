@@ -9,80 +9,130 @@ body {
 header {
   padding: 1.5rem;
   text-align: center;
-  background: #fff; /* optional: slightly different header background */
+  background: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 header h1 {
   margin: 0;
-  font-family: 'Playfair Display', serif;
+  font-family: "Lora", serif;
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 1px;
   color: #111;
 }
 
-/* ---------- Filters / Categories ---------- */
-#filters {
-  text-align: center;
-  margin: 15px 0;
+
+
+/* ---------- Filters Wrapper ---------- */
+.filters-wrapper {
+  padding: 0 40px; /* align with gallery */
+  box-sizing: border-box;
+  margin-bottom: 20px; /* space before gallery */
 }
 
-#filters button {
-  padding: 12px 24px;
-  margin: 5px 6px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #fff;
-  background: #444; /* dark buttons on light background */
+/* ---------- Main Category Wrapper ---------- */
+.category-wrapper {
+  display: inline-block; /* main button + subfilters together */
+  vertical-align: top;
+  margin-right: 20px; /* spacing between main categories */
+}
+
+/* Main category buttons */
+.category-wrapper > button {
+  padding: 8px 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111;
+  background: none;
   border: none;
-  border-radius: 30px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
 }
 
-#filters button:hover {
-  background: #ff7e5f; /* warm accent hover */
+.category-wrapper > button:hover,
+.category-wrapper > button.active {
+  color: #ff7e5f;
 }
 
-#filters button.active {
-  background: #feb47b; /* active accent */
-  color: #111;
+/* Local subcategory buttons container */
+.subfilters-local {
+  margin-top: 5px;      /* small gap below main button */
+  margin-left: 10px;    /* slight indent */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
-#filters button:focus {
-  outline: none; /* remove violet outline */
-}
-#filters button:visited {
-  text-decoration: none;
-  color: #111;
+/* Subcategory buttons */
+.subfilters-local button {
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-#filters button:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(255,126,95,0.5); /* subtle glow for keyboard users */
+.subfilters-local button:hover,
+.subfilters-local button.active {
+  color: #ff7e5f;
 }
+
+/* ---------- Responsive Adjustments ---------- */
+@media (max-width: 768px) {
+  .filters-wrapper {
+    padding: 0 20px;
+  }
+
+  .category-wrapper > button {
+    font-size: 1rem;
+    padding: 6px 10px;
+  }
+
+  .subfilters-local button {
+    font-size: 0.85rem;
+    padding: 3px 6px;
+  }
+}
+
+
+
+
+
 
 /* ---------- Gallery ---------- */
 .gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 photos per row on desktop */
-  gap: 30px; /* doubled from 15px */
-  padding: 0 40px 40px 40px; /* doubled from 20px */
+  gap: 30px; /* spacing between photos */
+  padding: 0 40px 40px 40px;
   box-sizing: border-box;
+}
+
+/* Category titles in gallery */
+.gallery h2 {
+  grid-column: 1 / -1; /* span full width of grid */
+  font-family: "Lora", serif;
+  font-size: 1.5rem; /* smaller than default h2 */
+  font-weight: 400;
+  color: #111;
+  margin: 30px 0 15px 0; /* spacing above and below */
+  padding-left: 40px; /* align with gallery padding */
 }
 
 .gallery img {
   width: 100%;
   height: auto;
-  /* border-radius: 4px; */
   cursor: pointer;
   transition: transform 0.3s;
 }
 
-.gallery img:hover {
+/* .gallery img:hover {
   transform: scale(1.05);
-}
+} */
 
 /* ---------- Load More Button ---------- */
 #load-more {
@@ -125,25 +175,23 @@ header h1 {
 #lightbox img {
   max-width: 90%;
   max-height: 90%;
-  /* border-radius: 8px; */
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
 /* ---------- Responsive / Mobile ---------- */
-
-/* Tablets */
 @media (max-width: 1024px) {
   .gallery {
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px; /* doubled from 12px */
-    padding: 0 30px 30px 30px; /* doubled from 15px */
+    gap: 24px;
+    padding: 0 30px 30px 30px;
   }
 
   header h1 {
     font-size: 2rem;
   }
 
-  #filters button {
+  #filters button,
+  #subfilters button {
     padding: 10px 22px;
     font-size: 1rem;
   }
@@ -152,26 +200,21 @@ header h1 {
     padding: 10px 25px;
     font-size: 1rem;
   }
-
-  #lightbox img {
-    max-width: 95%;
-    max-height: 95%;
-  }
 }
 
-/* Phones — max 2 columns */
 @media (max-width: 768px) {
   .gallery {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px; /* doubled from 10px */
-    padding: 0 20px 20px 20px; /* doubled from 10px */
+    gap: 20px;
+    padding: 0 20px 20px 20px;
   }
 
   header h1 {
     font-size: 1.8rem;
   }
 
-  #filters button {
+  #filters button,
+  #subfilters button {
     padding: 8px 18px;
     font-size: 0.95rem;
   }
@@ -182,19 +225,17 @@ header h1 {
   }
 }
 
-/* Very small phones — 1 column */
 @media (max-width: 480px) {
   .gallery {
     grid-template-columns: 1fr;
-    gap: 16px; /* doubled from 8px */
-    padding: 0 16px 16px 16px; /* doubled from 8px */
+    gap: 16px;
+    padding: 0 16px 16px 16px;
   }
 
   header h1 {
     font-size: 1.5rem;
   }
 }
-
 
 /* ---------- Optional: Disable text selection ---------- */
 body, button {
