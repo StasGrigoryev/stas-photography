@@ -6,83 +6,79 @@ const batchSize = 20;
 const filtersContainer = document.getElementById('filters');     
 const subfiltersContainer = document.getElementById('subfilters'); 
 
-fetch('photos.json')
+
+  fetch('photos_data.json')
   .then(res => res.json())
-  .then(data => {
-    photos = data;
+  .then(json => {
+    data = json;
+    photos = data.photos;
     buildFilters();
     currentIndex = 0;
     gallery.innerHTML = '';
-    loadPhotosBatch('all'); // initial load: all
+    loadPhotosBatch('all'); // initial load
   })
-  .catch(err => console.error("Error loading photos.json:", err));
+  .catch(err => console.error("Error loading photos_data.json:", err));
 
   // Assuming filtersContainer is your #filters element
-function buildFilters() {
-  const categories = {};
-  photos.forEach(photo => {
-    if (!categories[photo.category]) categories[photo.category] = new Set();
-    if (photo.subcategory) categories[photo.category].add(photo.subcategory);
-  });
-
-  filtersContainer.innerHTML = '';
-
-  // Create All button inside its own wrapper
-  const allWrapper = document.createElement('div');
-  allWrapper.classList.add('category-wrapper');
-
-  const allBtn = document.createElement('button');
-  allBtn.id = 'all-button';
-  allBtn.classList.add('active');
-  allBtn.textContent = 'All';
-  allBtn.onclick = () => filterPhotos('all');
-  allWrapper.appendChild(allBtn);
-
-  filtersContainer.appendChild(allWrapper);
-
-  // Generate other main categories
-  for (let category in categories) {
-    const wrapper = document.createElement('div');
-    wrapper.classList.add('category-wrapper');
-
-    const btn = document.createElement('button');
-    btn.textContent = category;
-    btn.onclick = () => showSubcategories(wrapper, category, categories[category]);
-    wrapper.appendChild(btn);
-
-    const subContainer = document.createElement('div');
-    subContainer.classList.add('subfilters-local');
-    wrapper.appendChild(subContainer);
-
-    filtersContainer.appendChild(wrapper);
+  function buildFilters() {
+    filtersContainer.innerHTML = '';
+  
+    // Create All button
+    const allWrapper = document.createElement('div');
+    allWrapper.classList.add('category-wrapper');
+    const allBtn = document.createElement('button');
+    allBtn.id = 'all-button';
+    allBtn.classList.add('active');
+    allBtn.textContent = 'All';
+    allBtn.onclick = () => filterPhotos('all');
+    allWrapper.appendChild(allBtn);
+    filtersContainer.appendChild(allWrapper);
+  
+    // Sort main categories by order
+    const sortedCategories = Object.entries(data.categories)
+                                   .sort((a,b) => a[1].order - b[1].order);
+  
+    sortedCategories.forEach(([categoryName, catData]) => {
+      const wrapper = document.createElement('div');
+      wrapper.classList.add('category-wrapper');
+  
+      const btn = document.createElement('button');
+      btn.textContent = categoryName;
+      btn.onclick = () => showSubcategories(wrapper, categoryName);
+      wrapper.appendChild(btn);
+  
+      const subContainer = document.createElement('div');
+      subContainer.classList.add('subfilters-local');
+      wrapper.appendChild(subContainer);
+  
+      filtersContainer.appendChild(wrapper);
+    });
   }
-}
 
   
-  function showSubcategories(wrapper, category, subcats) {
+  function showSubcategories(wrapper, category) {
     // Highlight active main category
     document.querySelectorAll('#filters button').forEach(btn => btn.classList.remove('active'));
     wrapper.querySelector('button').classList.add('active');
   
-    // Load main category photos only (exclude subcategories)
+    // Load main category photos only
     filterPhotos(category);
   
-    // Clear previous subcategories in this wrapper
     const subContainer = wrapper.querySelector('.subfilters-local');
     subContainer.innerHTML = '';
   
-    // Add subcategory buttons if they exist
-    if (subcats.size > 0) {
-      subcats.forEach(sub => {
-        const subBtn = document.createElement('button');
-        subBtn.textContent = sub;
-        subBtn.onclick = () => filterPhotos(category, sub);
-        subContainer.appendChild(subBtn);
-      });
-    }
+    const subcats = data.categories[category]?.subcategories || {};
+    const sortedSubcats = Object.entries(subcats)
+                                .sort((a,b) => a[1].order - b[1].order);
+  
+    sortedSubcats.forEach(([subName, subData]) => {
+      const subBtn = document.createElement('button');
+      subBtn.textContent = subName;
+      subBtn.onclick = () => filterPhotos(category, subName);
+      subContainer.appendChild(subBtn);
+    });
   }
   
-
 
   function loadPhotosBatch(filter='all', subcategory=null) {
     gallery.innerHTML = '';
@@ -91,22 +87,43 @@ function buildFilters() {
     let filtered = photos;
   
     if (filter !== 'all') {
-      // Main category + optional subcategory
+      // Filter by category + optional subcategory
       filtered = photos.filter(p => p.category === filter && (!subcategory || p.subcategory === subcategory));
+  
+      // Show category or subcategory description
+      let descText = "";
+      if (subcategory) {
+        const key = data.categories[filter]?.subcategories[subcategory];
+        if (key) descText = key.description || "";
+      } else {
+        descText = data.categories[filter]?.description || "";
+      }
+  
+      if (descText) {
+        const desc = document.createElement('p');
+        desc.textContent = descText;
+        desc.style.margin = '10px 0 20px 0';
+        desc.style.fontSize = '1rem';
+        desc.style.color = '#555';
+        gallery.appendChild(desc);
+      }
     }
   
     if (filter === 'all') {
-      // Group by category
+      // Group photos by category WITHOUT descriptions
       const categories = [...new Set(photos.map(p => p.category))];
   
       categories.forEach(cat => {
-        // Add category title
+        // Category title
         const title = document.createElement('h2');
         title.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
-        title.style.margin = '30px 0 10px 0';
+        title.style.gridColumn = '1 / -1'; // span full width
+        title.style.margin = '30px 0 15px 0';
+        title.style.fontSize = '1.5rem';
+        title.style.color = '#111';
         gallery.appendChild(title);
   
-        // Add photos of this category
+        // Photos for this category
         const catPhotos = photos.filter(p => p.category === cat);
         catPhotos.forEach(photo => {
           const img = document.createElement('img');
@@ -124,9 +141,8 @@ function buildFilters() {
       return;
     }
   
-    // For individual category/subcategory: show batch
+    // Single category/subcategory batch loading
     const batch = filtered.slice(currentIndex, currentIndex + batchSize);
-  
     batch.forEach(photo => {
       const img = document.createElement('img');
       img.src = photo.thumb;
@@ -138,10 +154,9 @@ function buildFilters() {
   
     currentIndex += batch.length;
   
-    // Load More button logic
+    // Load More button
     const oldButton = document.getElementById('load-more');
     if (oldButton) oldButton.remove();
-  
     if (currentIndex < filtered.length) {
       const btn = document.createElement('button');
       btn.id = 'load-more';

@@ -1,0 +1,369 @@
+{
+  "categories": {
+    "moscow": {
+      "description": "Moscow is the biggest and the richest city in my country. Also a capital. Whatever though. See that guy in a hat and coat? His name is Akram, he's a cool guy.",
+      "order": 2,
+      "subcategories": {}
+    },
+    "peterburg": {
+      "description": "Saint-Petersburg is the city of Alexey Davidov. Not of some saint Peter as many people think. Also there is a lot of bridges and it's kinda rainy and cloudy there. Or maybe it's not. Idk. I don't live there.",
+      "order": 3,
+      "subcategories": {}
+    },
+    "other": {
+      "description": "",
+      "order": 999,
+      "subcategories": {
+        "irbis": {
+          "description": "One day, not day, it was already a night, I walked past this gas station and saw that it's fucking dark no lights at all. It was so unusial, because it was working 24/7 as long as I lived in this neighbourhood. I don't know why they decided to rebuild it because it looked fine to me, hope it will look cooler."
+        },
+        "hands": {
+          "description": "Hands"
+        }
+      }
+    },
+    "kazan": {
+      "description": "Kazan is the capital of Tatrstan Republic ahahahaha idk why I wrote this. Here are some pictures of my city. Ok that's the description. Cool. See you later!",
+      "order": 1,
+      "subcategories": {}
+    }
+  },
+  "photos": [
+    {
+      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-1-thumb.jpeg",
+      "full": "photos/moscow/stas-grigoryev-moscow-1.jpeg",
+      "category": "moscow",
+      "subcategory": null,
+      "alt": "moscow stas-grigoryev-moscow-1",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-2-thumb.jpeg",
+      "full": "photos/moscow/stas-grigoryev-moscow-2.jpeg",
+      "category": "moscow",
+      "subcategory": null,
+      "alt": "moscow stas-grigoryev-moscow-2",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-3-thumb.jpeg",
+      "full": "photos/moscow/stas-grigoryev-moscow-3.jpeg",
+      "category": "moscow",
+      "subcategory": null,
+      "alt": "moscow stas-grigoryev-moscow-3",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-4-thumb.jpeg",
+      "full": "photos/moscow/stas-grigoryev-moscow-4.jpeg",
+      "category": "moscow",
+      "subcategory": null,
+      "alt": "moscow stas-grigoryev-moscow-4",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-5-thumb.jpeg",
+      "full": "photos/moscow/stas-grigoryev-moscow-5.jpeg",
+      "category": "moscow",
+      "subcategory": null,
+      "alt": "moscow stas-grigoryev-moscow-5",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-6-thumb.jpeg",
+      "full": "photos/moscow/stas-grigoryev-moscow-6.jpeg",
+      "category": "moscow",
+      "subcategory": null,
+      "alt": "moscow stas-grigoryev-moscow-6",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-7-thumb.jpeg",
+      "full": "photos/moscow/stas-grigoryev-moscow-7.jpeg",
+      "category": "moscow",
+      "subcategory": null,
+      "alt": "moscow stas-grigoryev-moscow-7",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-8-thumb.jpeg",
+      "full": "photos/moscow/stas-grigoryev-moscow-8.jpeg",
+      "category": "moscow",
+      "subcategory": null,
+      "alt": "moscow stas-grigoryev-moscow-8",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-9-thumb.jpeg",
+      "full": "photos/moscow/stas-grigoryev-moscow-9.jpeg",
+      "category": "moscow",
+      "subcategory": null,
+      "alt": "moscow stas-grigoryev-moscow-9",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-1-thumb.jpeg",
+      "full": "photos/peterburg/stas-grigoryev-peterburg-1.jpeg",
+      "category": "peterburg",
+      "subcategory": null,
+      "alt": "peterburg stas-grigoryev-peterburg-1",
+      "date": "20-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-2-thumb.jpeg",
+      "full": "photos/peterburg/stas-grigoryev-peterburg-2.jpeg",
+      "category": "peterburg",
+      "subcategory": null,
+      "alt": "peterburg stas-grigoryev-peterburg-2",
+      "date": "20-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-3-thumb.jpeg",
+      "full": "photos/peterburg/stas-grigoryev-peterburg-3.jpeg",
+      "category": "peterburg",
+      "subcategory": null,
+      "alt": "peterburg stas-grigoryev-peterburg-3",
+      "date": "20-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-4-thumb.jpeg",
+      "full": "photos/peterburg/stas-grigoryev-peterburg-4.jpeg",
+      "category": "peterburg",
+      "subcategory": null,
+      "alt": "peterburg stas-grigoryev-peterburg-4",
+      "date": "20-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-5-thumb.jpeg",
+      "full": "photos/peterburg/stas-grigoryev-peterburg-5.jpeg",
+      "category": "peterburg",
+      "subcategory": null,
+      "alt": "peterburg stas-grigoryev-peterburg-5",
+      "date": "20-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-6-thumb.jpeg",
+      "full": "photos/peterburg/stas-grigoryev-peterburg-6.jpeg",
+      "category": "peterburg",
+      "subcategory": null,
+      "alt": "peterburg stas-grigoryev-peterburg-6",
+      "date": "19-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-7-thumb.jpeg",
+      "full": "photos/peterburg/stas-grigoryev-peterburg-7.jpeg",
+      "category": "peterburg",
+      "subcategory": null,
+      "alt": "peterburg stas-grigoryev-peterburg-7",
+      "date": "19-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-8-thumb.jpeg",
+      "full": "photos/peterburg/stas-grigoryev-peterburg-8.jpeg",
+      "category": "peterburg",
+      "subcategory": null,
+      "alt": "peterburg stas-grigoryev-peterburg-8",
+      "date": "19-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-9-thumb.jpeg",
+      "full": "photos/peterburg/stas-grigoryev-peterburg-9.jpeg",
+      "category": "peterburg",
+      "subcategory": null,
+      "alt": "peterburg stas-grigoryev-peterburg-9",
+      "date": "19-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-10-thumb.jpeg",
+      "full": "photos/peterburg/stas-grigoryev-peterburg-10.jpeg",
+      "category": "peterburg",
+      "subcategory": null,
+      "alt": "peterburg stas-grigoryev-peterburg-10",
+      "date": "19-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-11-thumb.jpeg",
+      "full": "photos/peterburg/stas-grigoryev-peterburg-11.jpeg",
+      "category": "peterburg",
+      "subcategory": null,
+      "alt": "peterburg stas-grigoryev-peterburg-11",
+      "date": "19-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-12-thumb.jpeg",
+      "full": "photos/peterburg/stas-grigoryev-peterburg-12.jpeg",
+      "category": "peterburg",
+      "subcategory": null,
+      "alt": "peterburg stas-grigoryev-peterburg-12",
+      "date": "19-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-13-thumb.jpeg",
+      "full": "photos/peterburg/stas-grigoryev-peterburg-13.jpeg",
+      "category": "peterburg",
+      "subcategory": null,
+      "alt": "peterburg stas-grigoryev-peterburg-13",
+      "date": "20-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-14-thumb.jpeg",
+      "full": "photos/peterburg/stas-grigoryev-peterburg-14.jpeg",
+      "category": "peterburg",
+      "subcategory": null,
+      "alt": "peterburg stas-grigoryev-peterburg-14",
+      "date": "20-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-15-thumb.jpeg",
+      "full": "photos/peterburg/stas-grigoryev-peterburg-15.jpeg",
+      "category": "peterburg",
+      "subcategory": null,
+      "alt": "peterburg stas-grigoryev-peterburg-15",
+      "date": "20-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/irbis/stas-grigoryev-irbis-1-thumb.jpeg",
+      "full": "photos/other/irbis/stas-grigoryev-irbis-1.jpeg",
+      "category": "other",
+      "subcategory": "irbis",
+      "alt": "other irbis stas-grigoryev-irbis-1",
+      "date": "23-08-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/irbis/stas-grigoryev-irbis-2-thumb.jpeg",
+      "full": "photos/other/irbis/stas-grigoryev-irbis-2.jpeg",
+      "category": "other",
+      "subcategory": "irbis",
+      "alt": "other irbis stas-grigoryev-irbis-2",
+      "date": "26-08-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/irbis/stas-grigoryev-irbis-3-thumb.jpeg",
+      "full": "photos/other/irbis/stas-grigoryev-irbis-3.jpeg",
+      "category": "other",
+      "subcategory": "irbis",
+      "alt": "other irbis stas-grigoryev-irbis-3",
+      "date": "31-08-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/irbis/stas-grigoryev-irbis-4-thumb.jpeg",
+      "full": "photos/other/irbis/stas-grigoryev-irbis-4.jpeg",
+      "category": "other",
+      "subcategory": "irbis",
+      "alt": "other irbis stas-grigoryev-irbis-4",
+      "date": "12-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/hands/stas-grigoryev-hands-1-thumb.jpeg",
+      "full": "photos/other/hands/stas-grigoryev-hands-1.jpeg",
+      "category": "other",
+      "subcategory": "hands",
+      "alt": "other hands stas-grigoryev-hands-1",
+      "date": "20-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/hands/stas-grigoryev-hands-2-thumb.jpeg",
+      "full": "photos/other/hands/stas-grigoryev-hands-2.jpeg",
+      "category": "other",
+      "subcategory": "hands",
+      "alt": "other hands stas-grigoryev-hands-2",
+      "date": "31-08-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/hands/stas-grigoryev-hands-3-thumb.jpeg",
+      "full": "photos/other/hands/stas-grigoryev-hands-3.jpeg",
+      "category": "other",
+      "subcategory": "hands",
+      "alt": "other hands stas-grigoryev-hands-3",
+      "date": "30-08-2025"
+    },
+    {
+      "thumb": "photos/thumbs/kazan/stas-grigoryev-kazan-1-thumb.jpeg",
+      "full": "photos/kazan/stas-grigoryev-kazan-1.jpeg",
+      "category": "kazan",
+      "subcategory": null,
+      "alt": "kazan stas-grigoryev-kazan-1",
+      "date": "31-05-2025"
+    },
+    {
+      "thumb": "photos/thumbs/kazan/stas-grigoryev-kazan-2-thumb.jpeg",
+      "full": "photos/kazan/stas-grigoryev-kazan-2.jpeg",
+      "category": "kazan",
+      "subcategory": null,
+      "alt": "kazan stas-grigoryev-kazan-2",
+      "date": "19-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/kazan/stas-grigoryev-kazan-3-thumb.jpeg",
+      "full": "photos/kazan/stas-grigoryev-kazan-3.jpeg",
+      "category": "kazan",
+      "subcategory": null,
+      "alt": "kazan stas-grigoryev-kazan-3",
+      "date": "19-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/kazan/stas-grigoryev-kazan-4-thumb.jpeg",
+      "full": "photos/kazan/stas-grigoryev-kazan-4.jpeg",
+      "category": "kazan",
+      "subcategory": null,
+      "alt": "kazan stas-grigoryev-kazan-4",
+      "date": "22-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/kazan/stas-grigoryev-kazan-5-thumb.jpeg",
+      "full": "photos/kazan/stas-grigoryev-kazan-5.jpeg",
+      "category": "kazan",
+      "subcategory": null,
+      "alt": "kazan stas-grigoryev-kazan-5",
+      "date": "24-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/kazan/stas-grigoryev-kazan-6-thumb.jpeg",
+      "full": "photos/kazan/stas-grigoryev-kazan-6.jpeg",
+      "category": "kazan",
+      "subcategory": null,
+      "alt": "kazan stas-grigoryev-kazan-6",
+      "date": "28-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/kazan/stas-grigoryev-kazan-7-thumb.jpeg",
+      "full": "photos/kazan/stas-grigoryev-kazan-7.jpeg",
+      "category": "kazan",
+      "subcategory": null,
+      "alt": "kazan stas-grigoryev-kazan-7",
+      "date": "30-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/kazan/stas-grigoryev-kazan-8-thumb.jpeg",
+      "full": "photos/kazan/stas-grigoryev-kazan-8.jpeg",
+      "category": "kazan",
+      "subcategory": null,
+      "alt": "kazan stas-grigoryev-kazan-8",
+      "date": "03-05-2025"
+    },
+    {
+      "thumb": "photos/thumbs/kazan/stas-grigoryev-kazan-9-thumb.jpeg",
+      "full": "photos/kazan/stas-grigoryev-kazan-9.jpeg",
+      "category": "kazan",
+      "subcategory": null,
+      "alt": "kazan stas-grigoryev-kazan-9",
+      "date": "03-05-2025"
+    },
+    {
+      "thumb": "photos/thumbs/kazan/stas-grigoryev-kazan-10-thumb.jpeg",
+      "full": "photos/kazan/stas-grigoryev-kazan-10.jpeg",
+      "category": "kazan",
+      "subcategory": null,
+      "alt": "kazan stas-grigoryev-kazan-10",
+      "date": "05-05-2025"
+    },
+    {
+      "thumb": "photos/thumbs/kazan/stas-grigoryev-kazan-11-thumb.jpeg",
+      "full": "photos/kazan/stas-grigoryev-kazan-11.jpeg",
+      "category": "kazan",
+      "subcategory": null,
+      "alt": "kazan stas-grigoryev-kazan-11",
+      "date": "06-05-2025"
+    }
+  ]
+}
