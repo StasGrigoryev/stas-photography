@@ -34,7 +34,8 @@ data = {
 main_category_order = {
     "kazan": 1,
     "moscow": 2,
-    "peterburg": 3
+    "peterburg": 3,
+    "other": 4
 }
 
 

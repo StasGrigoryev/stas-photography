@@ -9,8 +9,12 @@ body {
 header {
   padding: 1.5rem;
   text-align: center;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  /* background: #fff; */
+  /* box-shadow: 0 2px 6px rgba(0,0,0,0.1); */
+  border-bottom: 1px solid #111;
+  margin-bottom: 20px; /* space before gallery */
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 header h1 {
@@ -21,8 +25,6 @@ header h1 {
   letter-spacing: 1px;
   color: #111;
 }
-
-
 
 /* ---------- Filters Wrapper ---------- */
 .filters-wrapper {
@@ -38,8 +40,9 @@ header h1 {
   margin-right: 20px; /* spacing between main categories */
 }
 
-/* Main category buttons */
+/* ---------- Main Category Buttons ---------- */
 .category-wrapper > button {
+  text-decoration: none; /* remove underline */
   padding: 8px 12px;
   font-size: 1.2rem;
   font-weight: 700;
@@ -53,19 +56,21 @@ header h1 {
 .category-wrapper > button:hover,
 .category-wrapper > button.active {
   color: #ff7e5f;
+  text-decoration: none; /* ensure no underline on hover */
 }
 
 /* Local subcategory buttons container */
 .subfilters-local {
   margin-top: 5px;      /* small gap below main button */
-  margin-left: 10px;    /* slight indent */
+  margin-left: 12px;    /* slight indent */
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
 }
 
-/* Subcategory buttons */
+/* ---------- Subcategory Buttons ---------- */
 .subfilters-local button {
+  text-decoration: none; /* remove underline */
   padding: 4px 8px;
   font-size: 0.9rem;
   font-weight: 500;
@@ -79,29 +84,8 @@ header h1 {
 .subfilters-local button:hover,
 .subfilters-local button.active {
   color: #ff7e5f;
+  text-decoration: none; /* ensure no underline on hover */
 }
-
-/* ---------- Responsive Adjustments ---------- */
-@media (max-width: 768px) {
-  .filters-wrapper {
-    padding: 0 20px;
-  }
-
-  .category-wrapper > button {
-    font-size: 1rem;
-    padding: 6px 10px;
-  }
-
-  .subfilters-local button {
-    font-size: 0.85rem;
-    padding: 3px 6px;
-  }
-}
-
-
-
-
-
 
 /* ---------- Gallery ---------- */
 .gallery {
@@ -112,17 +96,27 @@ header h1 {
   box-sizing: border-box;
 }
 
-/* Category titles in gallery */
+/* ---------- Gallery Category Titles ---------- */
 .gallery h2 {
-  grid-column: 1 / -1; /* span full width of grid */
+  text-decoration: none; /* remove underline */
   font-family: "Lora", serif;
-  font-size: 1.5rem; /* smaller than default h2 */
-  font-weight: 400;
+  font-size: 1.5rem;
+  font-weight: 500;
   color: #111;
-  margin: 30px 0 15px 0; /* spacing above and below */
+  margin: 30px 0 15px 0;
   padding-left: 40px; /* align with gallery padding */
 }
 
+/* Category descriptions in gallery */
+.category-description {
+  grid-column: 1 / -1;
+  margin: 8px 0 20px;
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Photos */
 .gallery img {
   width: 100%;
   height: auto;
@@ -190,10 +184,13 @@ header h1 {
     font-size: 2rem;
   }
 
-  #filters button,
-  #subfilters button {
-    padding: 10px 22px;
-    font-size: 1rem;
+  .category-wrapper > button {
+    font-size: 1.05rem;
+    padding: 6px 10px;
+  }
+
+  .subfilters-local button {
+    font-size: 0.9rem;
   }
 
   #load-more {
@@ -213,10 +210,12 @@ header h1 {
     font-size: 1.8rem;
   }
 
-  #filters button,
-  #subfilters button {
-    padding: 8px 18px;
-    font-size: 0.95rem;
+  .category-wrapper > button {
+    font-size: 1rem;
+  }
+
+  .subfilters-local button {
+    font-size: 0.85rem;
   }
 
   #load-more {
