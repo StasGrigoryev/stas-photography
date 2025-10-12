@@ -60,9 +60,8 @@ data = {
 # Define manual order
 main_category_order = {
     "kazan": 1,
-    "moscow": 2,
-    "peterburg": 3,
-    "other": 4
+    "peterburg": 2,
+    "other": 3
 }
 
 

@@ -1,19 +1,17 @@
 {
   "categories": {
-    "moscow": {
-      "description": "Moscow is the biggest and the richest city in my country. Also a capital. Anyways. See that guy in a hat and coat? His name is Akram, he's a cool guy.",
-      "order": 2,
-      "subcategories": {}
-    },
     "peterburg": {
       "description": "Saint-Petersburg is the city of Alexey Davidov. Not of some saint Peter as many people think. Also there is a lot of bridges and it's often kinda rainy there. Or maybe it's not. Idk. I don't live there.",
-      "order": 3,
+      "order": 2,
       "subcategories": {}
     },
     "other": {
       "description": "",
-      "order": 4,
+      "order": 3,
       "subcategories": {
+        "moscow": {
+          "description": "Moscow is the biggest and the richest city in my country. Also a capital. Anyways. See that guy in a hat and coat? His name is Akram, he's a cool guy."
+        },
         "irbis": {
           "description": "One day, not day, it was already a night, I walked past this gas station and saw that it's fucking dark no lights at all. It was so unusial, because it was working 24/7 as long as I lived in this neighbourhood. I don't know why they decided to rebuild it because it looked fine to me, hope it will look cooler."
         },
@@ -29,87 +27,6 @@
     }
   },
   "photos": [
-    {
-      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-1-thumb.jpeg",
-      "full": "photos/moscow/stas-grigoryev-moscow-1.jpeg",
-      "category": "moscow",
-      "subcategory": null,
-      "alt": "moscow stas-grigoryev-moscow-1",
-      "description": "",
-      "date": "26-04-2025"
-    },
-    {
-      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-2-thumb.jpeg",
-      "full": "photos/moscow/stas-grigoryev-moscow-2.jpeg",
-      "category": "moscow",
-      "subcategory": null,
-      "alt": "moscow stas-grigoryev-moscow-2",
-      "description": "",
-      "date": "26-04-2025"
-    },
-    {
-      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-3-thumb.jpeg",
-      "full": "photos/moscow/stas-grigoryev-moscow-3.jpeg",
-      "category": "moscow",
-      "subcategory": null,
-      "alt": "moscow stas-grigoryev-moscow-3",
-      "description": "",
-      "date": "26-04-2025"
-    },
-    {
-      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-4-thumb.jpeg",
-      "full": "photos/moscow/stas-grigoryev-moscow-4.jpeg",
-      "category": "moscow",
-      "subcategory": null,
-      "alt": "moscow stas-grigoryev-moscow-4",
-      "description": "",
-      "date": "26-04-2025"
-    },
-    {
-      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-5-thumb.jpeg",
-      "full": "photos/moscow/stas-grigoryev-moscow-5.jpeg",
-      "category": "moscow",
-      "subcategory": null,
-      "alt": "moscow stas-grigoryev-moscow-5",
-      "description": "",
-      "date": "26-04-2025"
-    },
-    {
-      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-6-thumb.jpeg",
-      "full": "photos/moscow/stas-grigoryev-moscow-6.jpeg",
-      "category": "moscow",
-      "subcategory": null,
-      "alt": "moscow stas-grigoryev-moscow-6",
-      "description": "",
-      "date": "26-04-2025"
-    },
-    {
-      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-7-thumb.jpeg",
-      "full": "photos/moscow/stas-grigoryev-moscow-7.jpeg",
-      "category": "moscow",
-      "subcategory": null,
-      "alt": "moscow stas-grigoryev-moscow-7",
-      "description": "",
-      "date": "26-04-2025"
-    },
-    {
-      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-8-thumb.jpeg",
-      "full": "photos/moscow/stas-grigoryev-moscow-8.jpeg",
-      "category": "moscow",
-      "subcategory": null,
-      "alt": "moscow stas-grigoryev-moscow-8",
-      "description": "",
-      "date": "26-04-2025"
-    },
-    {
-      "thumb": "photos/thumbs/moscow/stas-grigoryev-moscow-9-thumb.jpeg",
-      "full": "photos/moscow/stas-grigoryev-moscow-9.jpeg",
-      "category": "moscow",
-      "subcategory": null,
-      "alt": "moscow stas-grigoryev-moscow-9",
-      "description": "",
-      "date": "26-04-2025"
-    },
     {
       "thumb": "photos/thumbs/peterburg/stas-grigoryev-peterburg-1-thumb.jpeg",
       "full": "photos/peterburg/stas-grigoryev-peterburg-1.jpeg",
@@ -244,6 +161,87 @@
       "alt": "peterburg stas-grigoryev-peterburg-15",
       "description": "",
       "date": "20-09-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/moscow/stas-grigoryev-moscow-1-thumb.jpeg",
+      "full": "photos/other/moscow/stas-grigoryev-moscow-1.jpeg",
+      "category": "other",
+      "subcategory": "moscow",
+      "alt": "other moscow stas-grigoryev-moscow-1",
+      "desc": "",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/moscow/stas-grigoryev-moscow-2-thumb.jpeg",
+      "full": "photos/other/moscow/stas-grigoryev-moscow-2.jpeg",
+      "category": "other",
+      "subcategory": "moscow",
+      "alt": "other moscow stas-grigoryev-moscow-2",
+      "desc": "",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/moscow/stas-grigoryev-moscow-3-thumb.jpeg",
+      "full": "photos/other/moscow/stas-grigoryev-moscow-3.jpeg",
+      "category": "other",
+      "subcategory": "moscow",
+      "alt": "other moscow stas-grigoryev-moscow-3",
+      "desc": "",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/moscow/stas-grigoryev-moscow-4-thumb.jpeg",
+      "full": "photos/other/moscow/stas-grigoryev-moscow-4.jpeg",
+      "category": "other",
+      "subcategory": "moscow",
+      "alt": "other moscow stas-grigoryev-moscow-4",
+      "desc": "",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/moscow/stas-grigoryev-moscow-5-thumb.jpeg",
+      "full": "photos/other/moscow/stas-grigoryev-moscow-5.jpeg",
+      "category": "other",
+      "subcategory": "moscow",
+      "alt": "other moscow stas-grigoryev-moscow-5",
+      "desc": "",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/moscow/stas-grigoryev-moscow-6-thumb.jpeg",
+      "full": "photos/other/moscow/stas-grigoryev-moscow-6.jpeg",
+      "category": "other",
+      "subcategory": "moscow",
+      "alt": "other moscow stas-grigoryev-moscow-6",
+      "desc": "",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/moscow/stas-grigoryev-moscow-7-thumb.jpeg",
+      "full": "photos/other/moscow/stas-grigoryev-moscow-7.jpeg",
+      "category": "other",
+      "subcategory": "moscow",
+      "alt": "other moscow stas-grigoryev-moscow-7",
+      "desc": "",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/moscow/stas-grigoryev-moscow-8-thumb.jpeg",
+      "full": "photos/other/moscow/stas-grigoryev-moscow-8.jpeg",
+      "category": "other",
+      "subcategory": "moscow",
+      "alt": "other moscow stas-grigoryev-moscow-8",
+      "desc": "",
+      "date": "26-04-2025"
+    },
+    {
+      "thumb": "photos/thumbs/other/moscow/stas-grigoryev-moscow-9-thumb.jpeg",
+      "full": "photos/other/moscow/stas-grigoryev-moscow-9.jpeg",
+      "category": "other",
+      "subcategory": "moscow",
+      "alt": "other moscow stas-grigoryev-moscow-9",
+      "desc": "",
+      "date": "26-04-2025"
     },
     {
       "thumb": "photos/thumbs/other/irbis/stas-grigoryev-irbis-1-thumb.jpeg",

@@ -23,12 +23,12 @@ const lightboxNext = document.getElementById("lightbox-next");
 const mainButtons = new Map();
 const subButtons = new Map();
 
-const mainCategoryOrder = ['all', 'kazan', 'moscow', 'peterburg', 'other'];
+const mainCategoryOrder = ['all', 'kazan', 'peterburg', 'other'];
 const subCategoryOrder = {
   kazan: [],
   moscow: [],
   peterburg: [],
-  other: ['irbis', 'hands']
+  other: ['moscow', 'irbis', 'hands']
 };
 
 // ---------- helpers ----------
