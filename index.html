@@ -9,9 +9,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single+Ink:wght@100..900&family=Lora:ital,wght@0,400..700;1,400..700&family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 
   <!-- CSS -->
@@ -24,20 +21,26 @@
     <h1>Stas Grigoryev Photography</h1>
   </header>
 
-
+  <!-- Filters -->
   <div class="filters-wrapper">
     <section id="filters"></section>
-    <section id="subfilters"></section>
   </div>
 
   <!-- Gallery -->
   <section class="gallery" id="gallery"></section>
 
-  <!-- Load More -->
-  <button id="load-more" onclick="loadMore()">Load More</button>
+  <div id="lightbox">
+    <div class="lightbox-content">
+      <button id="lightbox-prev" class="lightbox-arrow">❮</button>
+      <img id="lightbox-img" src="" alt="">
+      <button id="lightbox-next" class="lightbox-arrow">❯</button>
+    </div>
+    <div class="lightbox-info">
+      <p id="lightbox-desc"></p>
+      <p id="lightbox-date"></p>
+    </div>
+  </div>
 
-  <!-- Lightbox -->
-  <div id="lightbox" style="display:none;"></div>
 
   <!-- JS -->
   <script src="js/gallery.js"></script>
