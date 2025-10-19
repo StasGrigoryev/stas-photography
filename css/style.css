@@ -1,9 +1,11 @@
 /* ---------- Base Styles ---------- */
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Martian Mono", monospace !important;
   background: #f5f5f5;
   color: #111;
-  margin: 0;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 1400px;
 }
 
 header {
@@ -14,8 +16,8 @@ header {
 }
 
 header h1 {
-  margin: 0;
-  font-family: "Lora", serif;
+  margin: 0; 
+  /* font-family: "Martian Mono", monospace; */
   font-size: 2.5rem;
   font-weight: 400;
   letter-spacing: 1px;
@@ -58,10 +60,17 @@ header h1 {
 /* ---------- Local Subfilters ---------- */
 .subfilters-local {
   margin-top: 5px;
-  margin-left: 12px;
+  margin-left: 16px;
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
+}
+
+/* Make “other” subcategories vertical */
+.category-wrapper.other .subfilters-local {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
 }
 
 .subfilters-local button {
@@ -95,7 +104,7 @@ header h1 {
 }
 
 .gallery h2 {
-  font-family: "Lora", serif;
+  /* font-family: "Lora", serif; */
   font-size: 1.5rem;
   font-weight: 500;
   color: #111;

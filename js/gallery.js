@@ -8,6 +8,7 @@ let data = {};
 let photos = [];
 const gallery = document.getElementById("gallery");
 const filtersContainer = document.getElementById("filters");
+let currentList = [];  // Stores photos for the currently active category/subcategory
 
 let currentIndex = 0;
 const batchSize = 20;
@@ -66,28 +67,46 @@ function makeButton(text, onClick, extraClass = "") {
   return btn;
 }
 
-function openLightbox(photo) {
-  const index = photos.findIndex(p => p.full === photo.full);
-  currentIndex = index;
+// function openLightbox(photo) {
+//   const index = photos.findIndex(p => p.full === photo.full);
+//   currentIndex = index;
 
+//   lightboxImg.src = photo.full;
+//   lightboxImg.alt = photo.alt;
+//   lightboxDesc.textContent = photo.description || "";
+//   lightboxDate.textContent = photo.date ? `${photo.date}` : "";
+
+//   lightbox.classList.add("visible");
+// }
+
+function openLightbox(photo) {
+  lightbox.classList.add("visible");
+  currentIndex = currentList.findIndex(p => p.full === photo.full);
+
+  updateLightbox(photo);
+}
+
+function updateLightbox(photo) {
   lightboxImg.src = photo.full;
   lightboxImg.alt = photo.alt;
   lightboxDesc.textContent = photo.description || "";
   lightboxDate.textContent = photo.date ? `${photo.date}` : "";
-
-  lightbox.classList.add("visible");
 }
 
 function showNextPhoto() {
-  if (photos.length === 0) return;
-  currentIndex = (currentIndex + 1) % photos.length;
-  openLightbox(photos[currentIndex]);
+  if (!currentList.length) return;
+  currentIndex = (currentIndex + 1) % currentList.length;
+  updateLightbox(currentList[currentIndex]);
 }
 
 function showPrevPhoto() {
-  if (photos.length === 0) return;
-  currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-  openLightbox(photos[currentIndex]);
+  if (!currentList.length) return;
+  currentIndex = (currentIndex - 1 + currentList.length) % currentList.length;
+  updateLightbox(currentList[currentIndex]);
+}
+
+function closeLightbox() {
+  lightbox.classList.remove("visible");
 }
 
 lightboxNext.addEventListener("click", e => {
@@ -123,74 +142,92 @@ function buildFilters() {
   mainButtons.clear();
   subButtons.clear();
 
-  // “All” button
+  // “All” button — clicking All hides subfilters
   const allWrapper = document.createElement('div');
   allWrapper.classList.add('category-wrapper');
   const allBtn = makeButton('all', () => {
-    // Hide all subfilters when clicking "All"
-    document.querySelectorAll('.subfilters-local').forEach(sub => sub.style.display = 'none');
-    // Reset main/sub button active states
+    // hide all subfilters
+    document.querySelectorAll('.subfilters-local').forEach(sc => {
+      sc.style.display = 'none';
+      // optionally clear subfilter active states
+      sc.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    });
+    // reset main active states
     document.querySelectorAll('#filters > .category-wrapper > button').forEach(btn => btn.classList.remove('active'));
-    document.querySelectorAll('.subfilters-local button').forEach(btn => btn.classList.remove('active'));
     allBtn.classList.add('active');
-    // Load all photos
     filterPhotos('all');
   }, 'active');
   mainButtons.set('all', allBtn);
   allWrapper.appendChild(allBtn);
   filtersContainer.appendChild(allWrapper);
 
-  // Main categories
+  // Main categories in defined order
   mainCategoryOrder.forEach(category => {
-    if (!categories[category]) return;
+    // skip if no photos for this category
+    if (!photos.some(p => p.category === category)) return;
 
     const wrapper = document.createElement('div');
     wrapper.classList.add('category-wrapper');
+    if (category === 'other') wrapper.classList.add('other'); // optional: special styling
 
-    const btn = makeButton(category, () => showSubcategories(wrapper, category, categories[category]));
+    const btn = makeButton(category, () => showSubcategories(wrapper, category));
     mainButtons.set(category, btn);
     wrapper.appendChild(btn);
 
     const subContainer = document.createElement('div');
     subContainer.classList.add('subfilters-local');
+    subContainer.style.display = 'none'; // initially hidden
     wrapper.appendChild(subContainer);
 
     filtersContainer.appendChild(wrapper);
 
-    const orderedSubs = subCategoryOrder[category] || [...categories[category]];
-    orderedSubs.forEach(sub => {
-      if (!categories[category].has(sub)) return;
-      const subBtn = makeButton(sub, () => filterPhotos(category, sub));
-      subButtons.set(`${category}|${sub}`, subBtn);
-    });
+    // don't pre-create subButtons here — they will be built on demand by ensureSubfiltersVisible()
   });
+
+  // if you want the page to initially show "featured" or first category, you could trigger it here.
+  // For now we keep initial load behavior outside of buildFilters().
 }
 
-function showSubcategories(wrapper, category, subcats) {
-  // Hide all other subfilters
-  document.querySelectorAll('.subfilters-local').forEach(sub => {
-    sub.style.display = 'none';
-    sub.innerHTML = '';
+function showSubcategories(wrapper, category) {
+  // clear active states for main buttons
+  document.querySelectorAll('#filters > .category-wrapper > button').forEach(btn => btn.classList.remove('active'));
+  // clear subfilters content for other wrappers (not strictly necessary if ensureSubfiltersVisible hides them)
+  document.querySelectorAll('.subfilters-local').forEach(sc => {
+    if (sc !== wrapper.querySelector('.subfilters-local')) {
+      sc.style.display = 'none';
+      sc.innerHTML = ''; // clear old nodes so they rebuild cleanly
+    }
   });
 
-  // Reset active classes
-  document.querySelectorAll('#filters > .category-wrapper > button').forEach(btn => btn.classList.remove('active'));
-  document.querySelectorAll('.subfilters-local button').forEach(btn => btn.classList.remove('active'));
+  // mark this main category active
+  const mainBtn = wrapper.querySelector('button');
+  if (mainBtn) mainBtn.classList.add('active');
 
-  // Activate this category
-  wrapper.querySelector('button').classList.add('active');
-  filterPhotos(category);
+  // build/show subfilters for this wrapper
+  ensureSubfiltersVisible(wrapper, category);
 
-  // Build subfilters and show them
-  if (subcats.size > 0) {
-    const subContainer = wrapper.querySelector('.subfilters-local');
-    subcats.forEach(sub => {
-      const subBtn = makeButton(sub, () => filterPhotos(category, sub));
-      subContainer.appendChild(subBtn);
-    });
-    subContainer.style.display = 'flex';
+  // Behavior: if there are subcategories, auto-show first subcategory photos
+  const subList = getSubcategoryListFromData(category);
+  const orderedSubs = subCategoryOrder[category] && subCategoryOrder[category].length
+    ? subCategoryOrder[category].filter(s => subList.includes(s))
+    : subList;
+
+  if (orderedSubs.length > 0) {
+    const first = orderedSubs[0];
+    // mark the subbutton active
+    const subBtn = subButtons.get(`${category}|${first}`);
+    if (subBtn) {
+      // clear other sub active states
+      subButtons.forEach(b => b.classList.remove('active'));
+      subBtn.classList.add('active');
+    }
+    filterPhotos(category, first);
+  } else {
+    // no subcats -> show main category photos
+    filterPhotos(category);
   }
 }
+
 
 // ---------- Gallery ----------
 function loadPhotosBatch(category = 'all', subcategory = null) {
@@ -252,6 +289,8 @@ function loadPhotosBatch(category = 'all', subcategory = null) {
     filtered = [...mainPhotos, ...subPhotos];
   }
 
+  currentList = filtered;
+
   renderBatch(filtered, category, subcategory);
 }
 
@@ -264,6 +303,9 @@ function renderBatch(list, category, subcat) {
     img.onclick = () => openLightbox(photo);
     gallery.appendChild(img);
   });
+
+  let filtered = batch.filter(p => p.category === category && (!subcat || p.subcat === subcat));
+
 
   currentIndex += batch.length;
 
@@ -282,23 +324,110 @@ function removeLoadMore() {
 }
 
 // ---------- Filtering ----------
+// function filterPhotos(category, subcategory = null) {
+//   mainButtons.forEach(btn => btn.classList.remove('active'));
+//   subButtons.forEach(btn => btn.classList.remove('active'));
+
+//   if (subcategory) {
+//     const key = `${category}|${subcategory}`;
+//     const subBtn = subButtons.get(key);
+//     if (subBtn) subBtn.classList.add('active');
+//   } else {
+//     const btn = mainButtons.get(category);
+//     if (btn) btn.classList.add('active');
+//   }
+
+//   currentIndex = 0;
+//   gallery.innerHTML = '';
+//   loadPhotosBatch(category, subcategory);
+// }
+
 function filterPhotos(category, subcategory = null) {
+  // Reset main/sub active classes in maps
   mainButtons.forEach(btn => btn.classList.remove('active'));
   subButtons.forEach(btn => btn.classList.remove('active'));
 
+  // Activate appropriate button(s)
   if (subcategory) {
     const key = `${category}|${subcategory}`;
     const subBtn = subButtons.get(key);
     if (subBtn) subBtn.classList.add('active');
+    const mainBtn = mainButtons.get(category);
+    if (mainBtn) mainBtn.classList.add('active');
   } else {
     const btn = mainButtons.get(category);
     if (btn) btn.classList.add('active');
   }
 
+  // Reset gallery and show photos
   currentIndex = 0;
   gallery.innerHTML = '';
+
+  // load photos (this will also set currentList if you added that)
   loadPhotosBatch(category, subcategory);
 }
+
+// ---------- Helpers to manage subfilters ----------
+function getSubcategoryListFromData(category) {
+  // Prefer category metadata (data.categories), fallback to scanning photos
+  const cats = data.categories || {};
+  const subObj = cats[category]?.subcategories;
+  if (subObj && Object.keys(subObj).length > 0) {
+    return Object.keys(subObj);
+  }
+  // fallback: scan photos
+  const set = new Set();
+  photos.forEach(p => {
+    if (p.category === category && p.subcategory) set.add(p.subcategory);
+  });
+  return Array.from(set);
+}
+
+/**
+ * Ensure subfilters for `category` are in the DOM and visible.
+ * If they are already built we just show them.
+ */
+function ensureSubfiltersVisible(wrapper, category) {
+  const subContainer = wrapper.querySelector('.subfilters-local');
+  // Hide others first
+  document.querySelectorAll('.subfilters-local').forEach(sc => {
+    if (sc !== subContainer) sc.style.display = 'none';
+  });
+
+  // If already has children, just show it
+  if (subContainer.childElementCount > 0) {
+    subContainer.style.display = 'flex';
+    return;
+  }
+
+  // Build subfilter buttons from data
+  const subs = getSubcategoryListFromData(category);
+  const orderedSubs = subCategoryOrder[category] && subCategoryOrder[category].length
+    ? subCategoryOrder[category].filter(s => subs.includes(s))
+    : subs;
+
+  orderedSubs.forEach(sub => {
+    const subBtn = makeButton(sub, () => {
+      // when user clicks subfilter, mark it active and filter
+      // clear active states
+      subButtons.forEach(b => b.classList.remove('active'));
+      const key = `${category}|${sub}`;
+      subButtons.set(key, subBtn);
+      subBtn.classList.add('active');
+      filterPhotos(category, sub);
+    });
+    subContainer.appendChild(subBtn);
+    // keep reference
+    subButtons.set(`${category}|${sub}`, subBtn);
+  });
+
+  if (orderedSubs.length > 0) {
+    subContainer.style.display = 'flex';
+  } else {
+    subContainer.style.display = 'none';
+  }
+}
+
 
 // ---------- Init ----------
 fetch("photos_data.json")
